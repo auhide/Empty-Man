@@ -125,6 +125,10 @@ def game_loop():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				quitgame()
+			elif event.type == pygame.KEYUP: # <----if the key is released
+				if event.key == pygame.K_a or event.key == pygame.K_d:
+					x_change = 0
+				currentImage = 0
 
 		keys = pygame.key.get_pressed()
 
@@ -155,11 +159,6 @@ def game_loop():
 				jumpCount = 10
 				
 			
-
-		if event.type == pygame.KEYUP: # <----if the key is released
-			if event.key == pygame.K_a or event.key == pygame.K_d:
-				x_change = 0
-			currentImage = 0
 
 		x += x_change
 
