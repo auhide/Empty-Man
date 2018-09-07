@@ -7,11 +7,11 @@ gameDisplay = pygame.display.set_mode((display_w, display_h))
 
 class Player:
 	def __init__(self, image_name, width, height):
-		self.w 			 = width
-		self.h 			 = height
-		self.image_w 	 = 50
-		self.image_h	 = 125
-		self.image_load  = pygame.image.load(image_name)
+		self.w 			= width
+		self.h 			= height
+		self.image_w 	= 50
+		self.image_h	= 125
+		self.image_load = pygame.image.load(image_name)
 		self.image_load = pygame.transform.scale(self.image_load, (self.image_w, self.image_h))
 
 	def print_image(self):

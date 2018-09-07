@@ -107,6 +107,8 @@ def game_loop():
 	# 1 for MOVING_IMAGE
 	# 2 for JUMPING_IMAGE
 
+	obstacle_gone = False
+
 	# Fence
 	obstacle_x 		= 1400
 	obstacle_y 		= 480
@@ -129,6 +131,8 @@ def game_loop():
 				if event.key == pygame.K_a or event.key == pygame.K_d:
 					x_change = 0
 				currentImage = 0
+
+		pygame.display.update()
 
 		keys = pygame.key.get_pressed()
 
@@ -214,12 +218,18 @@ def game_loop():
 			obstacle_x = display_w + 100
 			obstacle_speed += 0.5
 			bg_speed += 0.5# To increase the speed of the background
-			points += 1
+			obstacle_gone = False
+
 		# Conditions for the Rain Drop
 		if drop_y > display_h:
 			drop_y = 0 - drop_h*3
 			drop_x = random.randrange(0, display_w - drop_w) 
 			drop_speed += 0.4
+
+		# Conditions for the Points
+		if x > obstacle_x and not obstacle_gone:
+			points += 1
+			obstacle_gone = True
 
 		
 		# Collision with the Fence
